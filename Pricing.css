@@ -1,27 +1,54 @@
+*{
+  margin:0;
+  box-sizing:border-box;
+  }
+  body{
+    background-color:#ffe;
+    border: solid;
+}    
 .txt-color-one{
-color:#190B28;
+  color:#190B28;
+  padding:20px;
+  font-family: 'Oswald', sans-serif;
+  text-align:center;
 }
 header{
- box-shadow: 0px 2px 10px black;
- padding:20px;
-  border-top-right-radius:50%;
-  border-top-left-radius: 50%;
-  max-width:50%;
-  margin:10px auto;
-  font-family: 'Oswald', sans-serif;
+  position:fixed;
+  width:100%;
+  top:0;
+  background-color:#190B28;
+}
+.nav-container{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: space-around;
+  align-items:center;
+  border:solid;
+}
+.a{
+  text-decoration:none;
+  color:white;
+  padding:15px 20px;
+  cursor:pointer;
+}
+.a:hover{
+  border:1px solid;
+}
+.a:active{
+  opacity:0.7;
 }
 .choose{
 text-align:center;
-  font-size:50px;
+  font-size:35px;
+  padding:5px;
 }
-body{
-background-color:#ffe;
-}
-*{
-margin:0;
-box-sizing:border-box;
-
-}
+main{
+  max-width:90%;
+    margin:20px auto;
+    margin-top:10px;
+   box-shadow:0px 5px 20px black;
+  }
+  
 ul{
 list-style:none;
 }
@@ -45,23 +72,17 @@ width:15px;
 margin-bottom:10px;
   padding-left:30px;
 }
-main{
-max-width:90%;
-  margin:20px auto;
- box-shadow:0px 5px 20px black;
-}
-.header{
+.card-header{
    background:linear-gradient(45deg, #190B28 60%, white 40%);
   width:15em;
 }
-.header h1{
+.card-header h1{
    color:white;
     top:20%;
     padding:5px;
     text-shadow:0px 5px 20px white;
 
   }
-
 .pricing-container{
   display:flex;
   flex-flow: row wrap;
@@ -92,4 +113,14 @@ background:linear-gradient(-45deg, white 70%,  #190B28 30%);
   background-color:#ffe;
   color:#190B28;
   border:1px solid black;
+}
+.slide-in {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+.slide-in.show {
+  opacity: 1;
+  transform: translateX(0);
 }
