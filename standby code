@@ -1,0 +1,13 @@
+  <form method="post" action="#">
+            <fieldset class="form-container">
+              <label for="name" class="p">Full Name</label>
+              <input id="name" type="text" required/>
+              <label for="email">Email</label>
+              <input id="email" type="email"/>
+              <label for="password">Create password</label>
+              <input id="password" type="text" pattern="(?=.*[a-zA-Z])(?=.*\d).{8,}"/>
+              <button class="my-buttons">
+                Sign up
+              </button>
+            </fieldset>
+          </form>
