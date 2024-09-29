@@ -38,4 +38,4 @@ window.onload = function () {
         }
     }());
 };
-  /*END OF SCHOOL PRIDE CONFETTI CODE*/1
+  /*END OF SCHOOL PRIDE CONFETTI CODE*/
