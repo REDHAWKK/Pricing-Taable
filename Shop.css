@@ -7,6 +7,9 @@
     overflow: hidden;
     position:relative;
 }
+.shop-header:hover{
+  opacity:0.8;
+}
 .h{
     text-align:center;
       font-size:100px;
