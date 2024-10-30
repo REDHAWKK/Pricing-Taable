@@ -1,18 +1,14 @@
-// Automatically trigger slide-in animation on page load
-window.onload = function () {
-    const pictures = document.querySelectorAll('.slide-in');
-    const triggerPoint = window.innerHeight / 1.2;
-  
-    pictures.forEach(picture => {
-      const pictureTop = picture.getBoundingClientRect().top;
-  
-      if (pictureTop < triggerPoint) {
-        picture.classList.add('show');
-      }
-    });
-  };
-  
-  //SCHOOL PRIDE CONFETTI CODE*
+      /*welcome text*/
+  const text = "Welcome To Wine With Us"
+  let index = 0;
+  function typeText() {
+    if(index < text.length){
+      document.getElementById('intro').innerHTML += text.charAt(index); index++;
+      setTimeout(typeText, 100)
+    }
+  }
+  window.onload = typeText();
+    //SCHOOL PRIDE CONFETTI CODE*
   window.onload = function() {
     var end = Date.now() + 6 * 1000; // Run the confetti for 5 seconds
 

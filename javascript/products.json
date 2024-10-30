@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name":"Mathie and Claudine",
+        "price": 60,
+        "image":"images/WineBottle1.png"
+    },
+    {
+        "id": 2,
+        "name":"Chateau de France",
+        "price": 85,
+        "image":"images/WineBottle2.webp"
+    },
+    {
+        "id": 3,
+        "name":"Chateau",
+        "price": 75,
+        "image":"images/WineBottle3.webp"
+    },
+
+    {
+        "id": 4,
+        "name": "Champagne",
+        "price": 150,
+        "image": "images/WineBottle4.webp"
+    },
+
+    {
+        "id": 5,
+        "name": "Rioja Antano",
+        "price": 120,
+        "image":"images/WineBottle5.webp"
+    },
+
+    {
+        "id": 6,
+        "name": "Aranaiz",
+        "price": 100,
+        "image":"images/WineBottle6.webp"
+    }
+
+]
