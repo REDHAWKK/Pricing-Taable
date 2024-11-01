@@ -1,5 +1,40 @@
-.img{
-    width:40%;
-    height:100vh;
+body{
+    background-color: #190b28 !important;
+    scroll-behavior: smooth;
+}
+.intro{
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: space-evenly;
+    padding:20px;
+    align-items:center;
+    color:#ffe;
+    font-weight:bolder;
+    height:100vh
+}
+.rotating-img{
+    width: 300px;
     border-radius:50%;
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+    transition: opacity 0.5s ease, transform 1s ease;
+    position: relative;
+}
+.fade-in{
+    opacity:0;
+    transition:6s ease-out;
+}
+.show{
+    opacity:1;
+}
+.info{
+    background-color:#ffe;
+    height:100vh;
+    text-align:center;
+    font-weight:bolder;
+}
+@media (max-width:768px) {
+    .intro{
+        text-align: center;
+    }
 }
