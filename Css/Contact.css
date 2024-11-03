@@ -5,12 +5,11 @@ body{
 .intro{
     display:flex;
     flex-flow:row wrap;
-    justify-content: space-evenly;
-    padding:20px;
+    justify-content: space-around;
     align-items:center;
     color:#ffe;
     font-weight:bolder;
-    height:100vh
+    height:100vh;
 }
 .rotating-img{
     width: 300px;
@@ -32,9 +31,13 @@ body{
     height:100vh;
     text-align:center;
     font-weight:bolder;
+    margin-top:1%;
 }
 @media (max-width:768px) {
     .intro{
         text-align: center;
+    }
+    .rotating-img{
+        width:150px;
     }
 }
