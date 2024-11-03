@@ -5,11 +5,12 @@ body{
 .intro{
     display:flex;
     flex-flow:row wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items:center;
     color:#ffe;
     font-weight:bolder;
-    height:100vh;
+    min-height:100vh;
+    padding:0;
 }
 .rotating-img{
     width: 300px;
@@ -28,16 +29,14 @@ body{
 }
 .info{
     background-color:#ffe;
-    height:100vh;
+    min-height:100vh;
     text-align:center;
     font-weight:bolder;
     margin-top:1%;
+    width:100%;
 }
-@media (max-width:768px) {
+@media (max-width:1120px) {
     .intro{
         text-align: center;
     }
-    .rotating-img{
-        width:150px;
-    }
-}
+   }

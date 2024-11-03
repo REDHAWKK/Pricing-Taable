@@ -67,6 +67,12 @@ p{
     .second-half h1{
         font-size:40px;
     }
+    .intro img{
+        width:6em;
+    }
+    .first-half h1{
+        font-size:40px;
+    }
 }
 @keyframes tiltShake {
     0%, 100% { transform: rotate(0deg); }
