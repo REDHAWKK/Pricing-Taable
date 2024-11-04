@@ -143,7 +143,7 @@ const deleteCartItem = (product_id) => {
 };
 
 const initApp = () => {
-    fetch('javascript/products.json')
+    fetch('https://gist.githubusercontent.com/REDHAWKK/cfaa332bb88b0e83acb17279ad7fe8fe/raw/products.json')
         .then(response => response.json())
         .then(data => {
             listProducts = data;
@@ -153,7 +153,8 @@ const initApp = () => {
                 carts = JSON.parse(localStorage.getItem('cart'));
                 addCartToHTML();
             }
-        });
+        })
+        .catch(error => console.error('Error fetching data:', error)); // Optional error handling
 };
 
 initApp();
