@@ -35,6 +35,15 @@ body{
     margin-top:1%;
     width:100%;
 }
+.Profession p{
+    font-size:20px;
+    font-weight:bolder;
+}
+.my-video{
+    width:80%;
+    max-width:700px;
+    box-shadow:0px 2px 10px black;
+}
 @media (max-width:1120px) {
     .intro{
         text-align: center;

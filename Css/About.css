@@ -54,15 +54,6 @@ p{
     height:auto;
     border-radius:20%;
 }
-.hidden{
-    opacity:0;
-    transform:translateY(-20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-.show{
-    opacity:1;
-    transform:translateY(0);
-}
 @media (max-width:768px){
     .second-half h1{
         font-size:40px;

@@ -35,3 +35,15 @@ window.onload = function() {
   rotateFunction(); // Start the rotation effect
   typeText();       // Start the typewriter effect
 };
+
+const elementsHidden = document.querySelectorAll('.hidden');
+function scrollHandler() {
+  elementsHidden.forEach(element => {
+  const rect = element.getBoundingClientRect();
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  if (rect.top <= windowHeight - 100) {
+    element.classList.add('show');
+}
+});
+}
+window.addEventListener('scroll', scrollHandler)
