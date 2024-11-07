@@ -10,14 +10,14 @@
         "id": 2,
         "name":"Chateau de France",
         "price": 85,
-        "image":"images/winebottle2.jpg",
+        "image":"images/WineBottle2.png",
         "alt": "Chateau de France"
     },
     {
         "id": 3,
         "name":"Chateau",
         "price": 75,
-        "image":"images/winebottle2.jpg",
+        "image":"images/WineBottle3.png",
         "alt": "Chateau"
     },
 
@@ -25,7 +25,7 @@
         "id": 4,
         "name": "Champagne",
         "price": 150,
-        "image":"images/winebottle2.jpg",
+        "image":"images/WineBottle4.png",
         "alt": "Champagne"
     },
 
@@ -33,7 +33,7 @@
         "id": 5,
         "name": "Rioja Antano",
         "price": 120,
-        "image":"images/winebottle2.jpg",
+        "image":"images/WineBottle5.png",
         "alt": "Rioja Antano"
     },
 
@@ -41,7 +41,7 @@
         "id": 6,
         "name": "Aranaiz",
         "price": 100,
-        "image":"images/winebottle2.jpg",
+        "image":"images/WineBottle6.png",
         "alt": "Aranaiz"
     }
 
