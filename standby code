@@ -2,3 +2,4 @@
                 <h2>Mathie and Claudine</h2>
                 <div class="price">$50</div>
                 <button class="my-buttons addCart">Add To Cart</button>
+                background-image: url(/images/winebottle4.jpg);
