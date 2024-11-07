@@ -85,7 +85,7 @@ const addCartToHTML = () => {
                     <span class="minus" data-id="${cart.product_id}">-</span>
                     <span>${cart.quantity}</span>
                     <span class="plus" data-id="${cart.product_id}">+</span>
-                    <button class="delete btn btn-block btn-secondary" data-id="${cart.product_id}">Remove</button> <!-- Delete button -->
+                    <button class="delete btn btn-block btn-danger" data-id="${cart.product_id}">Remove</button> <!-- Delete button -->
                 </div>
             `;
             
