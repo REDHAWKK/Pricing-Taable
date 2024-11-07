@@ -1,0 +1,4 @@
+              <img src="images/WineBottle1.png" class="img" alt="Mathie and Claudine Wine">
+                <h2>Mathie and Claudine</h2>
+                <div class="price">$50</div>
+                <button class="my-buttons addCart">Add To Cart</button>
