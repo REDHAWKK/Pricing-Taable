@@ -38,9 +38,10 @@ body{
 .Profession p{
     font-size:20px;
     font-weight:bolder;
+    padding:10px;
 }
 .my-video{
-    width:80%;
+    width:100%;
     max-width:700px;
     box-shadow:0px 2px 10px black;
 }
