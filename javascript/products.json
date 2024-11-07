@@ -17,7 +17,7 @@
         "id": 3,
         "name":"Chateau",
         "price": 75,
-        "image":"images/WineBottle3.webp",
+        "image":"images/winebottle2.jpg",
         "alt": "Chateau"
     },
 
@@ -25,7 +25,7 @@
         "id": 4,
         "name": "Champagne",
         "price": 150,
-        "image": "images/WineBottle4.webp",
+        "image":"images/winebottle2.jpg",
         "alt": "Champagne"
     },
 
@@ -33,7 +33,7 @@
         "id": 5,
         "name": "Rioja Antano",
         "price": 120,
-        "image":"images/WineBottle5.webp",
+        "image":"images/winebottle2.jpg",
         "alt": "Rioja Antano"
     },
 
@@ -41,7 +41,7 @@
         "id": 6,
         "name": "Aranaiz",
         "price": 100,
-        "image":"images/WineBottle6.webp",
+        "image":"images/winebottle2.jpg",
         "alt": "Aranaiz"
     }
 
