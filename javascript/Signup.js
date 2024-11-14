@@ -1,28 +1,21 @@
 
-// References to the signup form elements
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const firstNameInput = document.getElementById("firstName");
-const lastNameInput = document.getElementById("lastName");
-const phoneNumberInput = document.getElementById("phoneNumber");
-const signupButton = document.getElementById("signupButton");
+const signupForm = document.getElementById("signupForm");
 
-signupButton.addEventListener("click", (e) => {
-  e.preventDefault(); // Preventing default form submission
-  
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent the default form submission
+
   const email = emailInput.value;
   const password = passwordInput.value;
   const firstName = firstNameInput.value;
   const lastName = lastNameInput.value;
   const phoneNumber = phoneNumberInput.value;
 
-  // Firebase Authentication - Creating user
+  // Firebase Authentication - Create user
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("User signed up:", user);
 
-      // Store user data (firstName, lastName, phoneNumber) in Firestore
+      // Store user data in Firestore
       addDoc(collection(db, "users"), {
         uid: user.uid,
         email: user.email,
@@ -35,9 +28,7 @@ signupButton.addEventListener("click", (e) => {
       });
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error("Error signing up:", errorCode, errorMessage);
+      console.error("Error signing up:", error.code, error.message);
     });
 });
 
