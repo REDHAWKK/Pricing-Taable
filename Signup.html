@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="Css/bootstrap.min.css">
     <link rel="stylesheet" href="Css/Main.css">
     <link rel="stylesheet" href="Css/Signup.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap">
   </head>
   <body>
@@ -44,9 +43,9 @@
 
 
 </pre>
- <main class="hidden">
+ <main>
      <h1 class="h1">Kindly Signup to get started</h1>
-<form method="post" id="signupForm">
+<form  id="signup-form" autocomplete="on">
     <fieldset>
         <label for="firstName">First Name</label>
         <input type="text" id="firstName" required/>
@@ -61,36 +60,10 @@
         <div class="my-btn">
           <button class="my-buttons" type="submit" id="signupButton">Submit</button>
           </div>      
-  
     </fieldset>
 </form>
  </main>
-
- <script type="module">
-  // Import the necessary Firebase functions
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDkhouztH4Qa0RGZdxIr8C3RsUgFYqUs7E",
-    authDomain: "wine-with-us-database.firebaseapp.com",
-    projectId: "wine-with-us-database",
-    storageBucket: "wine-with-us-database.firebasestorage.app",
-    messagingSenderId: "254154647200",
-    appId: "1:254154647200:web:87689653adc9af9f5dcbc5",
-    measurementId: "G-YEBJD2TYYR"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);  // Initialize Firebase Auth
-  const db = getFirestore(app); // Initialize Firestore
-</script>
- <script src="javascript/Signup.js"></script>
-<script src="javascript/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
+    <script type="module" src="javascript/Signup.js"></script>
+    <script src="javascript/bootstrap.bundle.min.js"></script>
 </body>
 </html>

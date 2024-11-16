@@ -1,7 +1,6 @@
-// Import necessary Firebase functions
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -13,61 +12,36 @@ const firebaseConfig = {
   appId: "1:254154647200:web:87689653adc9af9f5dcbc5",
   measurementId: "G-YEBJD2TYYR"
 };
-
-// Initializing Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Selecting the form
-const signupForm = document.getElementById("signupForm");
 
-//  event listener to handle form submission
-signupForm.addEventListener("submit", (e) => {
+function signUpUser(email, password, additionalData) {
+    createUserWithEmailAndPassword(auth, email, password)
+        .then(async (userCredential) => {
+            const user = userCredential.user;
+
+            // Save additional data to Firestore
+            await setDoc(doc(db, "users", user.uid), additionalData);
+
+            console.log("User signed up and data stored successfully!");
+        })
+        .catch((error) => {
+            console.error("Error signing up:", error.message);
+        });
+}
+document.getElementById("signup-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Get input values
+  // Get user input
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const firstName = document.getElementById("firstName").value;
   const lastName = document.getElementById("lastName").value;
   const phoneNumber = document.getElementById("phoneNumber").value;
 
-  // Create user with email and password
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-
-      // Add user data to Firestore
-      return addDoc(collection(db, "users"), {
-        uid: user.uid,
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
-        createdAt: new Date()
-      });
-    })
-    .then(() => {
-      console.log("User added to Firestore");
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  // Call the signUpUser function
+  signUpUser(email, password, { firstName, lastName , phoneNumber });
 });
-
-
-
-
-const elementsHidden = document.querySelectorAll('.hidden');
-function scrollHandler() {
-  elementsHidden.forEach(element => {
-  const rect = element.getBoundingClientRect();
-  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  if (rect.top <= windowHeight - 100) {
-    element.classList.add('show');
-}
-});
-}
-window.onload =
-scrollHandler();
