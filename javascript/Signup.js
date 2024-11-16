@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 // Firebase configuration
@@ -12,26 +12,34 @@ const firebaseConfig = {
   appId: "1:254154647200:web:87689653adc9af9f5dcbc5",
   measurementId: "G-YEBJD2TYYR"
 };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-
 function signUpUser(email, password, additionalData) {
-    createUserWithEmailAndPassword(auth, email, password)
-        .then(async (userCredential) => {
-            const user = userCredential.user;
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      const user = userCredential.user;
 
-            // Save additional data to Firestore
-            await setDoc(doc(db, "users", user.uid), additionalData);
+      // Save additional data to Firestore
+      await setDoc(doc(db, "users", user.uid), additionalData);
 
-            console.log("User signed up and data stored successfully!");
-        })
-        .catch((error) => {
-            console.error("Error signing up:", error.message);
-        });
+      // Save the user's UID in localStorage
+      localStorage.setItem("userId", user.uid);
+
+      console.log("User signed up and data stored successfully!");
+
+      // Redirect to shop.html
+      window.location.href = "shop.html";
+    })
+    .catch((error) => {
+      console.error("Error signing up:", error.message);
+      alert("Signup failed: " + error.message); // Show an error message to the user
+    });
 }
+
 document.getElementById("signup-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -43,5 +51,16 @@ document.getElementById("signup-form").addEventListener("submit", (e) => {
   const phoneNumber = document.getElementById("phoneNumber").value;
 
   // Call the signUpUser function
-  signUpUser(email, password, { firstName, lastName , phoneNumber });
+  signUpUser(email, password, { firstName, lastName, phoneNumber });
+});
+
+// Restrict access to pages if not logged in
+onAuthStateChanged(auth, (user) => {
+  const restrictedPages = ["shop.html", "profile.html"]; // Add your restricted pages here
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (!user && restrictedPages.includes(currentPage)) {
+    // Redirect to signup or login page
+    window.location.href = "signup.html";
+  }
 });

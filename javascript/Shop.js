@@ -6,6 +6,15 @@ let iconCartSpan = document.querySelector('.icon-cart span');
 let listProducts = [];
 let carts = [];
 
+document.addEventListener("DOMContentLoaded", () => {
+  const userId = localStorage.getItem("userId");
+  if (userId) {
+    displayFirstName(userId);
+  } else {
+    console.error("No user ID found in localStorage.");
+  }
+});
+
 const addDataToHTML = () => {
     listProductHTML.innerHTML = '';
     if (listProducts.length > 0) {
@@ -155,5 +164,4 @@ const initApp = () => {
             }
         });
 };
-
 initApp();
