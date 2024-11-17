@@ -19,27 +19,30 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 function signUpUser(email, password, additionalData) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(async (userCredential) => {
-      const user = userCredential.user;
-
-      // Save additional data to Firestore
-      await setDoc(doc(db, "users", user.uid), additionalData);
-
-      // Save the user's UID in localStorage
-      localStorage.setItem("userId", user.uid);
-
-      console.log("User signed up and data stored successfully!");
-
-      // Redirect to shop.html
-      window.location.href = "shop.html";
-    })
-    .catch((error) => {
-      console.error("Error signing up:", error.message);
-      alert("Signup failed: " + error.message); // Show an error message to the user
-    });
-}
-
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+  
+        // Save additional data to Firestore
+        await setDoc(doc(db, "users", user.uid), additionalData);
+  
+        // Save the user's UID in localStorage
+        localStorage.setItem("userId", user.uid);
+  
+        // Set a flag in localStorage to show a success message on shop.html
+        localStorage.setItem("signupSuccess", "true");
+  
+        console.log("User signed up and data stored successfully!");
+  
+        // Redirect to shop.html
+        window.location.href = "shop.html";
+      })
+      .catch((error) => {
+        console.error("Error signing up:", error.message);
+        alert("Signup failed: " + error.message); // Show an error message to the user
+      });
+  }
+  
 document.getElementById("signup-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
