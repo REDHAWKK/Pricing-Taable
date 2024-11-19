@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -32,7 +32,7 @@ function signUpUser(email, password, additionalData) {
         // Set a flag in localStorage to show a success message on shop.html
         localStorage.setItem("signupSuccess", "true");
   
-        console.log("User signed up and data stored successfully!");
+        alert(" You have signed up, welcome");
   
         // Redirect to shop.html
         window.location.href = "shop.html";
@@ -55,15 +55,4 @@ document.getElementById("signup-form").addEventListener("submit", (e) => {
 
   // Call the signUpUser function
   signUpUser(email, password, { firstName, lastName, phoneNumber });
-});
-
-// Restrict access to pages if not logged in
-onAuthStateChanged(auth, (user) => {
-  const restrictedPages = ["shop.html", "profile.html"]; // Add your restricted pages here
-  const currentPage = window.location.pathname.split("/").pop();
-
-  if (!user && restrictedPages.includes(currentPage)) {
-    // Redirect to signup or login page
-    window.location.href = "signup.html";
-  }
 });

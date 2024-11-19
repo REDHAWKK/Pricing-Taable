@@ -25,9 +25,6 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                  <a class="nav-link" id="logout-button">Log Out</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="Subscribe.html">Subscribe</a>
               </li>
               <li class="nav-item">
@@ -87,56 +84,6 @@
 </div>
 
       </main>
-      <script type="module">
-        // Firebase Imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-      
-        // Firebase Configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyDkhouztH4Qa0RGZdxIr8C3RsUgFYqUs7E",
-          authDomain: "wine-with-us-database.firebaseapp.com",
-          projectId: "wine-with-us-database",
-          storageBucket: "wine-with-us-database.firebasestorage.app",
-          messagingSenderId: "254154647200",
-          appId: "1:254154647200:web:87689653adc9af9f5dcbc5",
-          measurementId: "G-YEBJD2TYYR",
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-      
-        // Check Signup Success and Show Message
-        document.addEventListener("DOMContentLoaded", () => {
-          if (localStorage.getItem("signupSuccess") === "true") {
-            alert("Signup successful! Welcome to the shop!");
-            localStorage.removeItem("signupSuccess"); // Clear the flag
-          }
-      
-          // Redirect to index.html if the user is not logged in
-          onAuthStateChanged(auth, (user) => {
-            if (!user) {
-              alert("You are not logged in. Redirecting to the homepage.");
-              window.location.href = "index.html";
-            }
-          });
-        });
-      
-        // Logout Button Functionality
-        document.getElementById("logout-button").addEventListener("click", () => {
-          signOut(auth)
-            .then(() => {
-              localStorage.removeItem("userId"); // Clear user ID from local storage
-              alert("You have been logged out!");
-              window.location.href = "index.html"; // Redirect to the homepage
-            })
-            .catch((error) => {
-              console.error("Logout error:", error.message);
-              alert("Error logging out. Please try again.");
-            });
-        });
-      </script>
             <script type="module" src="javascript/Shop.js"></script>
       <script src="javascript/bootstrap.bundle.min.js"></script>
   </body>

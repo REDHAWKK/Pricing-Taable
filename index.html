@@ -26,9 +26,6 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="Shop.html">Shop</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="About.html">About</a>
               </li>
               <li class="nav-item">
@@ -78,72 +75,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="login-form">
-          <div class="mb-3">
-            <label for="login-email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="login-email" required />
-          </div>
-          <div class="mb-3">
-            <label for="login-password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="login-password" required />
-          </div>
-          <button type="submit" class="btn btn-primary">Log In</button>
-        </form>
+        <div class="text-center">
+          <button id="googleSignInButton" class="btn my-buttons">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo" class="me-2">
+            Sign in with Google
+        </button>
+        
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+
      </main>
     <!--JAVA SCRIPT-->
-    <script type="module">
-      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-    
-      const auth = getAuth();
-    
-      // Set custom validation messages for the input fields
-      const emailInput = document.getElementById("login-email");
-      const passwordInput = document.getElementById("login-password");
-    
-      emailInput.addEventListener("input", () => {
-        emailInput.setCustomValidity("");
-        emailInput.checkValidity();
-      });
-    
-      emailInput.addEventListener("invalid", () => {
-        emailInput.setCustomValidity("Please enter a valid email address.");
-      });
-    
-      passwordInput.addEventListener("input", () => {
-        passwordInput.setCustomValidity("");
-        passwordInput.checkValidity();
-      });
-    
-      passwordInput.addEventListener("invalid", () => {
-        passwordInput.setCustomValidity("Password cannot be empty.");
-      });
-    
-      // Handle Login Form Submission
-      document.getElementById("login-form").addEventListener("submit", (e) => {
-        e.preventDefault(); // Prevent form from refreshing the page
-    
-        const email = emailInput.value;
-        const password = passwordInput.value;
-    
-        // Firebase authentication
-        signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            // User logged in successfully
-            alert("Login successful! Redirecting to shop...");
-            window.location.href = "shop.html"; // Redirect to the shop page
-          })
-          .catch((error) => {
-            console.error("Login error:", error.message);
-            alert("Login failed: " + error.message);
-          });
-      });
-    </script>
-        
+    <script type="module" src="javascript/Login.js"></script>
     <script src="javascript/Wine.js"></script>
     <script src="javascript/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>

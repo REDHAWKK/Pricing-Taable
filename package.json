@@ -13,5 +13,10 @@
     "express": "^4.21.1",
     "firebase": "^11.0.2",
     "mysql2": "^3.11.4"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.13.0",
+    "process": "^0.11.10"
   }
 }

@@ -1,0 +1,73 @@
+.main-section {
+  max-width: 95%;
+  margin: 10px auto 20px;
+  box-shadow: 0 5px 20px #000;
+}
+
+.pricing-container {
+  flex-flow: wrap;
+  justify-content: space-around;
+  display: flex;
+}
+
+.pricing-item {
+  background-color: #fff;
+  width: 450px;
+  height: 100%;
+  margin: 10px;
+  display: inline-block;
+}
+
+.card-header {
+  background: linear-gradient(45deg, #190b28 60%, #fff 40%);
+  width: 19em;
+  position: absolute;
+}
+
+.card-header h1 {
+  color: #fff;
+  text-shadow: 0 3px 15px #fff;
+  padding: 5px;
+  top: 20%;
+}
+
+.main {
+  text-align: center;
+  background: linear-gradient(-45deg, #fff 80%, #190b28 20%);
+  box-shadow: 0 5px 15px #000;
+}
+
+.price {
+  text-align: right;
+  color: #190b28;
+  font-family: Oswald, sans-serif;
+  font-size: 40px;
+}
+
+.h2 {
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+p {
+  color: #fff;
+  font-weight: bold;
+}
+
+.ul {
+  margin-left: 90px;
+  list-style: none;
+}
+
+.ul li {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.ul li i {
+  width: 15px;
+  margin-right: 10px;
+}
+/*# sourceMappingURL=Subscribe.6cee3c4e.css.map */

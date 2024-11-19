@@ -1,0 +1,66 @@
+.welcome-container {
+  flex-flow: row;
+  gap: 2em;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.welcome-image {
+  z-index: 1;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  animation-name: float;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  position: relative;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(30px);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.welcome-button {
+  z-index: 2;
+  justify-content: center;
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.p {
+  padding: 30px;
+}
+
+@media (width <= 900px) {
+  .welcome-container {
+    flex-direction: column;
+  }
+
+  .first-btn {
+    display: none;
+  }
+}
+
+@media (width >= 901px) {
+  .second-btn {
+    display: none;
+  }
+}
+
+.modal-content {
+  color: #190b28;
+  background-color: #ffe;
+  font-weight: bold;
+}
+/*# sourceMappingURL=index.a64537aa.css.map */

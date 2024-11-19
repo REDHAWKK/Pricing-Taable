@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: #ffe !important;
+}
+
+.container-fluid {
+  z-index: 4;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  position: fixed;
+  top: 0;
+}
+
+.navbar-nav {
+  justify-content: space-around;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+}
+
+.nav-link {
+  color: #190b28;
+  cursor: pointer;
+  padding: 15px 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  border: 1px solid;
+}
+
+.nav-link:active {
+  opacity: .7;
+}
+
+.cart-icon {
+  width: 20px;
+}
+
+.zero {
+  border: 1px solid;
+  margin-left: 0;
+  padding: 10px;
+}
+
+#intro {
+  animation: 3s steps(30, end) typing, .5s step-end blink-caret;
+}
+
+.h1 {
+  text-align: center;
+  color: #190b28;
+  padding: 5px;
+  font-family: Oswald, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+.p {
+  color: #190b28;
+}
+
+.my-buttons {
+  color: #fff;
+  background-color: #190b28;
+  border: none;
+  margin: 20px 0;
+  padding: 10px 50px;
+  font-weight: bold;
+  transition: background-color .4s ease-in-out;
+}
+
+.my-buttons:hover {
+  cursor: pointer;
+  color: #190b28;
+  background-color: #ffe;
+  border: 1px solid #000;
+}
+
+.my-buttons:active {
+  background-color: #000;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity .5s ease-out, transform .5s ease-out;
+  transform: translateY(-20px);
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/*# sourceMappingURL=index.6553e649.css.map */
