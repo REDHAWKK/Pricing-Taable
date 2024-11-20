@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getFirestore, doc, setDoc, collection, getDocs } from "firebase/firestore";
+import { initializeApp } from "/firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "/firebase/auth";
+import { getFirestore, doc, setDoc, collection, getDocs } from "/firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
