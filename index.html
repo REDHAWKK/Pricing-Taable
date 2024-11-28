@@ -85,6 +85,24 @@
      </main>
     <!--JAVA SCRIPT-->
     <script type="module" src="javascript/Login.js"></script>
+    <script type="module">
+      import { setDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+    
+      // Function to save cart data
+      async function saveCartToFirestore(userId, cartItems) {
+        try {
+          await setDoc(doc(db, "carts", userId), { cart: cartItems });
+          console.log("Cart saved successfully!");
+        } catch (error) {
+          console.error("Error saving cart:", error);
+        }
+      }
+    
+      // Example usage: Call this whenever the cart is updated
+      const userId = auth.currentUser?.uid; // Get the logged-in user's ID
+      if (userId) saveCartToFirestore(userId, cartItems);
+    </script>
+    
     <script src="javascript/Wine.js"></script>
     <script src="javascript/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
