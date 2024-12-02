@@ -92,7 +92,7 @@ document.getElementById("googleSignInButton").addEventListener("click", async ()
 
     // Greet user and refresh the page
     swal(`Welcome back, ${user.displayName}!`).then(() => {
-      location.reload();
+      location.reload(); // Refresh the page after login
     });
   } catch (error) {
     console.error("Login Error:", error);
@@ -111,7 +111,7 @@ async function fetchCartFromFirestore(userId) {
       return [];
     }
   } catch (error) {
-    console.error("Error fetching cart:", error);
+    console.error("Error fetching cart from Firestore:", error);
     return [];
   }
 }
@@ -122,7 +122,7 @@ async function saveCartToFirestore(userId, cartItems) {
     await setDoc(doc(db, "carts", userId), { cart: cartItems });
     console.log("Cart saved successfully!");
   } catch (error) {
-    console.error("Error saving cart:", error);
+    console.error("Error saving cart to Firestore:", error);
   }
 }
 
@@ -157,7 +157,7 @@ document.getElementById("logoutButton").addEventListener("click", async () => {
     // Clear local storage and refresh page
     localStorage.removeItem("cart");
     swal("You have successfully logged out!").then(() => {
-      window.location.href = "index.html";
+      window.location.href = "index.html"; // Redirect after logout
     });
   } catch (error) {
     console.error("Logout Error:", error);
