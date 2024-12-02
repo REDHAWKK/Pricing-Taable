@@ -20,8 +20,9 @@
             <img src="images/wine logo.png" alt="Logo" width="80px" height="50px">
             Wine With Us
           </a>
-          
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <a class="nav-link" href="About.html">About</a>
@@ -29,8 +30,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="Contact.html">Contact the creator</a>
               </li>
-              
-            </ul>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login Modal" id="logoutButton">Log out</a>
+                </li>
+                            </ul>
           </div>
         </div>
       </nav>  
@@ -49,7 +52,7 @@
         Your premier online store for handpicked wines from around the world. Discover, shop, and enjoy premium wines delivered right to your door!
           </p>
           <div class="welcome-button first-btn">
-           <a href="Signup.html"><button class="my-buttons wel-btn ">Join now and discover your taste</button></a>
+           <a href="Shop.html"><button class="my-buttons wel-btn ">Go To Shop</button></a>
           </div>
     
         </div>
@@ -59,11 +62,11 @@
         </div>  
       </div> 
       <div class="welcome-button second-btn">
-        <a href="Signup.html"><button class="my-buttons wel-btn">Join now and discover your taste</button></a>
+        <a href="Shop.html"><button class="my-buttons wel-btn">Go To Shop</button></a>
       </div>
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="loginModalLabel">Log In</h5>
@@ -85,6 +88,7 @@
      </main>
     <!--JAVA SCRIPT-->
     <script src="javascript/Welcome.js" type="module"></script>
+    <script src="javascript/Shop.js" type="module"></script>
     <script src="javascript/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
