@@ -1,19 +1,41 @@
-/* welcome text */
+// Import Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDkhouztH4Qa0RGZdxIr8C3RsUgFYqUs7E",
+  authDomain: "wine-with-us-database.firebaseapp.com",
+  projectId: "wine-with-us-database",
+  storageBucket: "wine-with-us-database.appspot.com",
+  messagingSenderId: "254154647200",
+  appId: "1:254154647200:web:87689653adc9af9f5dcbc5",
+  measurementId: "G-YEBJD2TYYR"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+const db = getFirestore(app);
+
+// Welcome text animation
 const text = "Welcome To Wine With Us";
 let index = 0;
 
 function typeText() {
   if (index < text.length) {
-    document.getElementById('intro').innerHTML += text.charAt(index);
+    document.getElementById("intro").innerHTML += text.charAt(index);
     index++;
     setTimeout(typeText, 100);
   }
 }
 
-/* SCHOOL PRIDE CONFETTI CODE */
+// Confetti animation
 function startConfetti() {
-  var end = Date.now() + 6 * 1000; // Run the confetti for 6 seconds
-  var colors = ['#453db8', '#e6cec6', '#dfb8ab', '#fff'];
+  const end = Date.now() + 6 * 1000; // Run confetti for 6 seconds
+  const colors = ["#453db8", "#e6cec6", "#dfb8ab", "#fff"];
   
   (function frame() {
     confetti({
@@ -34,75 +56,47 @@ function startConfetti() {
     if (Date.now() < end) {
       requestAnimationFrame(frame);
     }
-  }());
+  })();
 }
 
-
-//CODE FOR LOGIN
-// Ensure the DOM is fully loaded
-function signIn() {
-  const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-  loginModal.show(); // Display the modal on page load
-  };
-// Show login modal only for unauthenticated users
+// Show login modal for unauthenticated users
 document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, (user) => {
+    const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
     if (!user) {
-      // User is not logged in; show the modal
-      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      // User not logged in; show modal
       loginModal.show();
     } else {
-      // User is logged in; hide the modal if necessary
-      console.log(`User is already logged in: ${user.displayName}`);
+      // User logged in; hide modal if visible
+      loginModal.hide();
+      console.log(`Welcome back, ${user.displayName}`);
     }
   });
 });
-    
-// Import Firebase modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDkhouztH4Qa0RGZdxIr8C3RsUgFYqUs7E",
-  authDomain: "wine-with-us-database.firebaseapp.com",
-  projectId: "wine-with-us-database",
-  storageBucket: "wine-with-us-database.appspot.com",
-  messagingSenderId: "254154647200",
-  appId: "1:254154647200:web:87689653adc9af9f5dcbc5",
-  measurementId: "G-YEBJD2TYYR"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-const db = getFirestore(app);
-
-// Handle Google Login
+// Google login button
 document.getElementById("googleSignInButton").addEventListener("click", async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
     const userId = user.uid;
 
-    // Fetch user's cart from Firestore
+    // Fetch and merge carts
     const firestoreCart = await fetchCartFromFirestore(userId);
-
-    // Sync Firestore cart with local cart
     const localCart = JSON.parse(localStorage.getItem("cart")) || [];
     const mergedCart = mergeCarts(localCart, firestoreCart);
 
-    // Save merged cart back to Firestore and update local storage
+    // Save merged cart to Firestore and update local storage
     await saveCartToFirestore(userId, mergedCart);
     localStorage.setItem("cart", JSON.stringify(mergedCart));
 
-    // Update UI with the restored cart
-    alert(`Welcome back, ${user.displayName}!`);
-    updateCartDisplay(mergedCart);
+    // Greet user and refresh the page
+    swal(`Welcome back, ${user.displayName}!`).then(() => {
+      location.reload();
+    });
   } catch (error) {
     console.error("Login Error:", error);
-    alert("An error occurred during login. Please try again.");
+    swal("An error occurred during login. Please try again.");
   }
 });
 
@@ -134,9 +128,7 @@ async function saveCartToFirestore(userId, cartItems) {
 
 // Function to merge local cart and Firestore cart
 function mergeCarts(localCart, firestoreCart) {
-  if (!Array.isArray(firestoreCart)) firestoreCart = [];
   const mergedCart = [...firestoreCart];
-
   localCart.forEach(localItem => {
     const index = mergedCart.findIndex(item => item.id === localItem.id);
     if (index === -1) {
@@ -145,60 +137,35 @@ function mergeCarts(localCart, firestoreCart) {
       mergedCart[index].quantity += localItem.quantity;
     }
   });
-
   return mergedCart;
 }
 
-// Logout function
+// Logout button
 document.getElementById("logoutButton").addEventListener("click", async () => {
   try {
     const userId = auth.currentUser?.uid;
+
+    // Save cart before logging out
     if (userId) {
       const localCart = JSON.parse(localStorage.getItem("cart")) || [];
       await saveCartToFirestore(userId, localCart);
     }
 
-    // Sign out the user
+    // Log out user
     await auth.signOut();
 
-    // Clear local cart and UI
+    // Clear local storage and refresh page
     localStorage.removeItem("cart");
-    clearCartUI();
-
-    alert("Successfully logged out!");
-    window.location.href = "index.html"; // Redirect to welcome/login page
+    swal("You have successfully logged out!").then(() => {
+      window.location.href = "index.html";
+    });
   } catch (error) {
     console.error("Logout Error:", error);
-    alert("An error occurred during logout. Please try again.");
+    swal("An error occurred during logout. Please try again.");
   }
 });
 
-// Function to clear cart UI
-function clearCartUI() {
-  const listCartHTML = document.querySelector('.listCart');
-  const iconCartSpan = document.querySelector('.icon-cart span');
-
-  listCartHTML.innerHTML = ""; // Clear cart items
-  iconCartSpan.textContent = "0"; // Reset cart count
-}
-
-// Show login modal only for unauthenticated users
-document.addEventListener("DOMContentLoaded", () => {
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-      loginModal.show();
-    }
-  });
-});
-
-// Utility to update cart display (implement as needed)
-function updateCartDisplay(cart) {
-  console.log("Cart Updated:", cart);
-  // Update the cart UI here (e.g., populate HTML elements)
-}
-
-// Welcome animation and confetti
+// Initialize animations on page load
 window.onload = function () {
   if (typeof typeText === "function") typeText();
   if (typeof startConfetti === "function") startConfetti();

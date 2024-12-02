@@ -6,6 +6,7 @@ let iconCartSpan = document.querySelector('.icon-cart span');
 let listProducts = [];
 let carts = [];
 
+
 // Fetch user ID from localStorage on page load
 document.addEventListener("DOMContentLoaded", () => {
   const userId = localStorage.getItem("userId");
@@ -172,3 +173,4 @@ const initApp = () => {
 };
 
 initApp();
+
