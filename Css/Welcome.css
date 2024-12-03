@@ -56,3 +56,10 @@ transform:translateY(-20px)
     color:#190B28;
     font-weight:bold;
 }
+.swal-modal{
+ background:#ffe;
+}
+.swal-text{
+    font-weight:bolder;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}

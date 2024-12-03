@@ -61,17 +61,24 @@ function startConfetti() {
 
 // Show login modal for unauthenticated users
 document.addEventListener("DOMContentLoaded", () => {
-  onAuthStateChanged(auth, (user) => {
-    const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
-    if (!user) {
-      // User not logged in; show modal
-      loginModal.show();
-    } else {
-      // User logged in; hide modal if visible
-      loginModal.hide();
-      console.log(`Welcome back, ${user.displayName}`);
-    }
-  });
+  const loginModalElement = document.getElementById("loginModal");
+
+  if (loginModalElement) {
+    // Modal is present, proceed with initialization
+    const loginModal = new bootstrap.Modal(loginModalElement);
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        loginModal.show();
+      } else {
+        loginModal.hide();
+        console.log(`Welcome back, ${user.displayName}`);
+      }
+    });
+  } else {
+    // Modal not found, skip modal logic
+    console.log("Login modal not found on this page.");
+  }
 });
 
 // Google login button
