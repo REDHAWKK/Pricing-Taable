@@ -11,7 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap">
   </head>
-  <body>
+  <body>  
+    <div class="loader" id="loader">
+      <div class="my-img">
+      <img src="/images/wine logo.png" class="loader-img">
+      </div>
+      <div class="my-txt">
+      <h1>Wine With Us</h1>
+      </div>
+      <div class="my-sec-txt">
+        <h3>From <span>Oriarebun Princeton</span></h3>
+       </div>
+    
+    </div>
+    <div class="content" id="content">
     <!--HEADER-->
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,6 +36,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <a class="nav-link" href="About.html">About</a>
@@ -35,7 +49,7 @@
                 </li>
                             </ul>
           </div>
-        </div>
+          </div>
       </nav>  
     </header>
 <pre>
@@ -43,6 +57,7 @@
 
 
 </pre>
+
      <main>
       <div class="welcome-container">
 
@@ -84,14 +99,14 @@
   </div>
 </div>
 
-
      </main>
+    </div>
     <!--JAVA SCRIPT-->
+    <script src="javascript/Loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="javascript/Welcome.js" type="module"></script>
     <script src="javascript/Shop.js" type="module"></script>
     <script src="javascript/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
   </body>
 </html>

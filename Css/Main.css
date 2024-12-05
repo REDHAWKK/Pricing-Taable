@@ -90,3 +90,37 @@
     opacity:1;
     transform:translateY(0);
 }
+.swal-modal{
+  background:#ffe;
+ }
+ .swal-text{
+     font-weight:bolder;
+     color:#190B28;
+ }
+ 
+ .content{
+     display:none;
+ }
+ .loader{
+     display:flex;
+     flex-flow:column;
+     align-items:center;
+     margin-top:25vh;
+     gap:1rem;
+ }
+ .my-img{
+  border-radius:50%;
+  border:solid #190B28;
+  padding:25px;
+ }
+ .loader-img{
+  width:150px;
+  height:auto;
+ }
+ .my-txt{
+     margin-bottom:10em;
+ }
+ .loader span{
+     color:blue;
+     font-family:Georgia, 'Times New Roman', Times, serif;
+ }
